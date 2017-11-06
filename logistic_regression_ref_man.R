@@ -37,15 +37,13 @@ model <- "
 "
 
 
-x <- seq(from=1, to=100, by=1)
-y <- ifelse(x < 50,
-            sample(c(0,1), replace=T, prob=c(0.9,0.1), size=length(x)),
-            sample(c(0,1), replace=T, prob=c(0.1,0.9), size=length(x))
-            )
+dat <- read.csv("input_file.csv")
 
-data_list <- list(y = y, x = x, N = length(y))
+data_list <- list(y = dat$y, x = dat$x, N = length(dat$y))
 
 # Compiling and producing posterior samples from the model.
 stan_samples <- stan(model_code = model, data = data_list)
-print(stan_samples)
+
+png("stan_output.png")
 plot(stan_samples)
+dev.off()

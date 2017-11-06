@@ -93,6 +93,6 @@ WORKDIR /home/rstudio
 
 RUN Rscript -e 'source("https://bioconductor.org/biocLite.R");biocLite("BiocStyle")'
 
-RUN chown root:staff /usr/local/bin/runif.R \
-    && chmod 777 /usr/local/bin/runif.R \
-    && chmod -R 777 /report
+#RUN chown root:staff /usr/local/bin/runif.R \
+#    && chmod 777 /usr/local/bin/runif.R \
+#    && chmod -R 777 /report

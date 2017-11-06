@@ -11,8 +11,29 @@
 #################################################################################
 
 # 1. I searched for 'docker and R stan' and found some docker recipes.
-# https://github.com/jrnold/docker-stan
-#https://hub.docker.com/r/jrnold/rstan/
+
+# 2. I'm going to revise this docker file:
+# https://github.com/jburos/rstan-docker/blob/master/Dockerfile
+# I'm going to edit that file, by:
+# -- changing the Maintainer.
+# -- adding my own script from my github repo
+# See the Dockerfile in this repo.
+
+# 3. Then I'm going to build the image
+# https://docs.docker.com/engine/getstarted/step_four/
+docker build -t gibbsstandocker ~/Code/DockerExpr/
+
+# this builds the image called gibbsdocker from the Dockerfile found in the
+# Code/DockerExpr directory.
+
+
+# 6. Make a repo, and push it to the docker repo.
+docker tag dockerexpr gibbsdavidl/gibbsdocker:latest
+docker images
+docker login
+docker push gibbsdavidl/gibbsdocker
+
+
 
 # 2. Now I'm going to edit the example pipeline file
 # https://cloud.google.com/genomics/v1alpha2/pipelines

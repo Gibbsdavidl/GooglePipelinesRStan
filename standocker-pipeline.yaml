@@ -4,19 +4,19 @@ inputParameters:
 - name: INPUT_FILE
   localCopy:
     disk: datadisk
-    path: catter_input.txt
+    path: data_file_1.txt
 - name: INPUT_SCRIPT
   localCopy:
     disk: datadisk
-    path: run_catterplots.R
+    path: logistic_regression_ref_man.R
 outputParameters:
 - name: OUTPUT_FILE
   localCopy:
     disk: datadisk
-    path: catter_out.png
+    path: stan_output.png
 resources:
   minimumCpuCores: 1
-  minimumRamGb: 1
+  minimumRamGb: 4
   zones:
   - us-central1-a
   - us-central1-b
@@ -28,5 +28,5 @@ resources:
     sizeGb: 100
     mountPoint: /mnt/data
 docker:
-  imageName: gibbsdavidl/gibbsdocker
-  cmd: "cd /mnt/data && Rscript run_catterplots.R"
+  imageName: jackinovik/rstan-complete
+  cmd: "cd /mnt/data && Rscript logistic_regression_ref_man.R"

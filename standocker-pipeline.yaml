@@ -1,10 +1,10 @@
-name: catterplot_pipeline
-description: Run a catter plots script to produce a figure
+name: stan_pipeline
+description: fit a bayesian model using stan
 inputParameters:
 - name: INPUT_FILE
   localCopy:
     disk: datadisk
-    path: data_file_1.txt
+    path: data.csv
 - name: INPUT_SCRIPT
   localCopy:
     disk: datadisk
@@ -13,7 +13,7 @@ outputParameters:
 - name: OUTPUT_FILE
   localCopy:
     disk: datadisk
-    path: stan_output.png
+    path: stan_output_1234.png
 resources:
   minimumCpuCores: 1
   minimumRamGb: 4

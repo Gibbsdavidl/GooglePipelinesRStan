@@ -37,7 +37,7 @@ model <- "
 "
 
 
-dat <- read.csv("input_file.csv")
+dat <- read.csv("data.csv")
 
 data_list <- list(y = dat$y, x = dat$x, N = length(dat$y))
 

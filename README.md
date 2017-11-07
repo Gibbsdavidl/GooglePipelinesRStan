@@ -19,12 +19,13 @@
 
 This collection of files can be used to demonstrate:
 
-1. Using a pre-built docker image from docker hub.
+1. Generating a set of commands, each running a job in the google cloud.
+   (cmd_generator.R, file_list.txt)
 
-2. Generating a set of commands, each running a job in the google cloud.
-
-3. Running a custom R script on user data, both contained in a google bucket.
+2. Running a custom R script on user data, both contained in a google bucket.
+   (logistic_regression_ref_man.R, data/*)
 
 4. Using the Google genomics pipeline to automatically setup and teardown a VM.
+   (standocker-pipeline.yaml)
 
 Please see the 'how_to_google_gen_pipeline.txt' file for instructions.

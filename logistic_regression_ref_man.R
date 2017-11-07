@@ -39,11 +39,16 @@ model <- "
 
 dat <- read.csv("data.csv")
 
+print(dim(dat))
+print(head(dat))
+
 data_list <- list(y = dat$y, x = dat$x, N = length(dat$y))
 
 # Compiling and producing posterior samples from the model.
 stan_samples <- stan(model_code = model, data = data_list)
 
-png("stan_output_in_yaml.png")
+png("stan_output_plot.png")
 plot(stan_samples)
 dev.off()
+
+write.table(as.data.frame(stan_samples), file="stan_output_table.txt", quote=F, row.names=F)

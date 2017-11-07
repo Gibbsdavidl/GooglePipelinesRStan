@@ -10,13 +10,17 @@ inputParameters:
     disk: datadisk
     path: logistic_regression_ref_man.R
 outputParameters:
+- name: OUTPUT_PLOT
+  localCopy:
+    disk: datadisk
+    path: stan_output_plot.png
 - name: OUTPUT_FILE
   localCopy:
     disk: datadisk
-    path: stan_output_in_yaml.png
+    path: stan_output_table.txt
 resources:
   minimumCpuCores: 1
-  minimumRamGb: 4
+  minimumRamGb: 2
   zones:
   - us-central1-a
   - us-central1-b

@@ -30,8 +30,7 @@ gcloud alpha genomics pipelines run \
 --pipeline-file standocker-pipeline.yaml \
 --inputs INPUT_FILE=gs://gibbs_bucket_nov162016/data/data_file_1.csv \
 --inputs INPUT_SCRIPT=gs://gibbs_bucket_nov162016/logistic_regression_ref_man.R \
---inputs INPUT_VALUE=1 \
---outputs OUTPUT_FILE=gs://gibbs_bucket_nov162016/stan_output/ \
+--outputs OUTPUT_FILE=gs://gibbs_bucket_nov162016/stan_output/stan_out_in_cmd.png \
 --logging gs://gibbs_bucket_nov162016/logs/
 
 # OK, it returns saying:

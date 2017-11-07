@@ -44,6 +44,6 @@ data_list <- list(y = dat$y, x = dat$x, N = length(dat$y))
 # Compiling and producing posterior samples from the model.
 stan_samples <- stan(model_code = model, data = data_list)
 
-png("stan_output_in_script.png")
+png("stan_output_in_yaml.png")
 plot(stan_samples)
 dev.off()

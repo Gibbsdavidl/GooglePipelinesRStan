@@ -34,10 +34,10 @@ gcloud alpha genomics pipelines run \
 --logging gs://gibbs_bucket_nov162016/logs/
 
 # OK, it returns saying:
-Running [operations/ENGRyN6LKxib783r--jChQcg6YmPu4QUKg9wcm9kdWN0aW9uUXVldWU].
+Running [operations/ENGopaL5KxiThuH18PenvxAg6YmPu4QUKg9wcm9kdWN0aW9uUXVldWU].
 
 # We can check it's status with:
-gcloud alpha genomics operations describe operations/ENGRyN6LKxib783r--jChQcg6YmPu4QUKg9wcm9kdWN0aW9uUXVldWU
+gcloud alpha genomics operations describe operations/ENGopaL5KxiThuH18PenvxAg6YmPu4QUKg9wcm9kdWN0aW9uUXVldWU
 
 davidgibbs@pear ~/C/DockerExpr> gcloud alpha genomics operations describe operations/ENGRyN6LKxib783r--jChQcg6YmPu4QUKg9wcm9kdWN0aW9uUXVldWU
 done: true

@@ -1,0 +1,4 @@
+--env SAMPLE_ID	--input DATA_FILE	--output OUTPUT_TABLE	--output OUTPUT_PLOT
+1	gs://your-google-bucket-name/data_file_1.csv	gs://your-google-bucket-name/stan_table1.txt	gs://your-google-bucket-name/stan_plot1.png
+2	gs://your-google-bucket-name/data_file_2.csv	gs://your-google-bucket-name/stan_table2.txt	gs://your-google-bucket-name/stan_plot2.png
+3	gs://your-google-bucket-name/data_file_3.csv	gs://your-google-bucket-name/stan_table3.txt	gs://your-google-bucket-name/stan_plot3.png

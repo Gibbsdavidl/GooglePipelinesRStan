@@ -1,33 +1,20 @@
 
+# writes out a task matrix for dsub.
 
+files <- list.files("data")
 
-#gcloud alpha genomics pipelines run \
-#--pipeline-file standocker-pipeline.yaml \
-#--inputs INPUT_FILE=gs://gibbs_bucket_nov162016/data/data_file_1.csv \
-#--inputs INPUT_SCRIPT=gs://gibbs_bucket_nov162016/logistic_regression_ref_man.R \
-#--outputs OUTPUT_PLOT=gs://gibbs_bucket_nov162016/stan_output/stan_test_plot1.png \
-#--outputs OUTPUT_FILE=gs://gibbs_bucket_nov162016/stan_output/stan_test_table1.txt \
-#--logging gs://gibbs_bucket_nov162016/logs/
-
-
-library(glue)
-
-files <- read.table("file_list.txt")
-
-cmdlist <- data.frame()
+#--env SAMPLE_ID --input DATA_FILE    --output OUTPUT_TABLE   --output OUTPUT_PLOT
+tasks <- data.frame(check.names = FALSE)
 
 bucket <- "gs://your-google-bucket-name/"
 
-pipeline_file <- "standocker-pipeline.yaml"
-input_script <- "logistic_regression_ref_man.R"
-
-for (i in 1:nrow(files)) {
+for (i in 1:length(files)) {
     print(i)
-     input_file <- files[i,1]
-     output_plot <- paste("stan_test_plot",i,".png",sep="")
-     output_table <- paste("stan_test_table",i,".txt",sep="")
-     cmd <- glue("gcloud alpha genomics pipelines run --pipeline-file {pipeline_file}  --inputs INPUT_FILE={bucket}data/{input_file} --inputs INPUT_SCRIPT={bucket}{input_script} --outputs OUTPUT_PLOT={bucket}stan_output/{output_plot} --outputs OUTPUT_FILE={bucket}stan_output/{output_table} --logging {bucket}logs/")
-     cmdlist <- rbind(cmdlist, data.frame(CMD=cmd))
+    sampleid <- i
+    input_file <- paste(bucket,files[i],sep="")
+    output_plot <- paste(bucket,"stan_plot",i,".png",sep="")
+    output_table <- paste(bucket,"stan_table",i,".txt",sep="")
+    tasks <- rbind(tasks, data.frame('--env SAMPLE_ID'=sampleid, '--input DATA_FILE'=input_file, '--output OUTPUT_TABLE'=output_table, '--output OUTPUT_PLOT'=output_plot, check.names = FALSE))
 }
 
-write.table(cmdlist, file="cmds.txt", row.names=F, col.names=F, quote=F)
+write.table(tasks, file="task_matrix.txt", row.names=F, col.names=T, sep='\t', quote=F)

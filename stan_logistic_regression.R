@@ -1,6 +1,8 @@
 #!/usr/bin/Rscript
 
 library(rstan)
+rstan_options(auto_write = TRUE)
+options(mc.cores = parallel::detectCores())
 
 # Getting started
 
@@ -40,7 +42,7 @@ model <- "
 
 
 # get the file name from the env.
-dat <- read.csv(Sys.getenv('INPUT_FILE'))
+dat <- read.csv(Sys.getenv('DATA_FILE'))
 print(dim(dat))
 print(head(dat))
 
@@ -53,4 +55,4 @@ png(Sys.getenv('OUTPUT_PLOT'))
 plot(stan_samples)
 dev.off()
 
-write.table(as.data.frame(stan_samples), file=Sys.getenv('OUTPUT_FILE'), quote=F, row.names=F)
+write.table(as.data.frame(stan_samples), file=Sys.getenv('OUTPUT_TABLE'), quote=F, row.names=F)

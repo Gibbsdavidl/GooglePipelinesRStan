@@ -25,6 +25,14 @@
 # which writes out a table with the variables needed in each row.
 # see this example: https://github.com/googlegenomics/dsub/tree/master/examples/custom_scripts
 
+# If you're on a mac, there's a conflict with
+# the apple system version of the python library 'six',
+# https://github.com/pypa/pip/issues/3165
+# (You can do this in a directory of your choosing.)
+# virtualenv dsub_libs
+# source dsub_libs/bin/activate
+# pip install dsub
+
 dsub \
   --project isb-cgc-02-0001 \
   --zones "us-west-*" \
@@ -35,13 +43,18 @@ dsub \
   --wait
 
 # OK, it returns saying:
-Running [operations/ENGopaL5KxiThuH18PenvxAg6YmPu4QUKg9wcm9kdWN0aW9uUXVldWU].
-
-# 5. We can check it's status with:
-gcloud alpha genomics operations describe operations/ENGopaL5KxiThuH18PenvxAg6YmPu4QUKg9wcm9kdWN0aW9uUXVldWU
-
-# and if we/I forget the job ID, we can check using:
-gcloud alpha genomics operations list | less
+Job: stan-logis--davidlgibbs--171107-193915-44
+Launched job-id: stan-logis--davidlgibbs--171107-193915-44
+3 task(s)
+To check the status, run:
+  dstat --project isb-cgc-02-0001 --jobs 'stan-logis--davidlgibbs--171107-193915-44' --status '*'
+To cancel the job, run:
+  ddel --project isb-cgc-02-0001 --jobs 'stan-logis--davidlgibbs--171107-193915-44'
+Waiting for job to complete...
+Waiting for: stan-logis--davidlgibbs--171107-193915-44.
+stan-logis--davidlgibbs--171107-193915-44: FAILURE
+[u'Error in job task-2 - code 5: 9: Failed to localize files: failed to copy the following files: "gs://your-google-bucket-name/data_file_2.csv -> /mnt/datadisk/input/gs/your-google-bucket-name/data_file_2.csv (cp failed: gsutil -q -m cp gs://your-google-bucket-name/data_file_2.csv /mnt/datadisk/input/gs/your-google-bucket-name/data_file_2.csv, command failed: BucketNotFoundException: 404 gs://your-google-bucket-name bucket does not exist.\\nCommandException: 1 file/object could not be transferred.\\n)"']
+JobExecutionError: One or more jobs finished with status FAILURE or CANCELED during wait.
 
 # Now, we can check our bucket for the output. If there's a problem, read the logs!
 # DONE!

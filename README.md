@@ -1,20 +1,19 @@
-# GooglePipelinesRStan
+GooglePipelinesRStan
 
 #################################################################################
-
 # How to run a custom script with dsub
 # David L Gibbs
 # dgibbs@systemsbiology.org
 # November 7, 2017
 
-# https://cloud.google.com/genomics/overview
+https://cloud.google.com/genomics/overview
 
 #################################################################################
 
-# In this example, I'm going to be fitting Bayesian models for logistic Regression
-# using Stan. (http://mc-stan.org/) Each job will process a single file,
-# but we could also have each job represent a parameter set, or model, all
-# processing the same data.
+In this example, I'm going to be fitting Bayesian logistic regression models using Stan
+(http://mc-stan.org/). Each job (model fitting) will process a single file,
+but we could also have each job represent a parameter set, or model, all
+processing the same data.
 
 This collection of files can be used to demonstrate:
 
